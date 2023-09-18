@@ -5,6 +5,10 @@ const app = express();
 const movie = require("./movie.json");
 const serie = require("./serie.json");
 
+app.get("/", (request, respond) => {
+  respond.send("reponse");
+});
+
 // ---- MOVIE ---- //
 
 app.get("/movie", async (request, respond) => {
@@ -12,7 +16,7 @@ app.get("/movie", async (request, respond) => {
     const movies = await movie;
     respond.status(200).json(movies);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    respond.status(500).json({ message: error.message });
   }
 });
 
